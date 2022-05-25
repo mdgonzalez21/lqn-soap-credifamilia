@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ax28="http://model.web.proptech.credifamilia.com/xsd" xmlns:ns="http://web.proptech.credifamilia.com" xmlns:ax25="http://request.web.proptech.credifamilia.com/xsd" xmlns:ax22="http://response.web.proptech.credifamilia.com/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ax21="http://exception.web.proptech.credifamilia.com/xsd" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" targetNamespace="http://web.proptech.credifamilia.com">
+    <wsp:Policy xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="SigOnly">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:AsymmetricBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+                    <wsp:Policy xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+                        <sp:InitiatorToken>
+                            <wsp:Policy>
+                                <sp:X509Token sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/Always">
+                                    <wsp:Policy>
+                                        <sp:WssX509V3Token10 />
+                                    </wsp:Policy>
+                                </sp:X509Token>
+                            </wsp:Policy>
+                        </sp:InitiatorToken>
+                        <sp:RecipientToken>
+                            <wsp:Policy>
+                                <sp:X509Token sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/Always">
+                                    <wsp:Policy>
+                                        <sp:WssX509V3Token10 />
+                                    </wsp:Policy>
+                                </sp:X509Token>
+                            </wsp:Policy>
+                        </sp:RecipientToken>
+                        <sp:AlgorithmSuite>
+                            <wsp:Policy>
+                                <sp:Basic256Sha256 />
+                            </wsp:Policy>
+                        </sp:AlgorithmSuite>
+                        <sp:Layout>
+                            <wsp:Policy>
+                                <sp:Strict />
+                            </wsp:Policy>
+                        </sp:Layout>
+                        <sp:IncludeTimestamp />
+                        <sp:OnlySignEntireHeadersAndBody />
+                    </wsp:Policy>
+                </sp:AsymmetricBinding>
+                <sp:Wss10 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+                    <wsp:Policy xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" />
+                </sp:Wss10>
+                <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+                    <sp:Body />
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsdl:documentation>
+		Endpoint expuestos a Proptechs
+	</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema xmlns:ax210="http://model.web.proptech.credifamilia.com/xsd" xmlns:ax24="http://exception.web.proptech.credifamilia.com/xsd" xmlns:ax26="http://request.web.proptech.credifamilia.com/xsd" xmlns:ax27="http://response.web.proptech.credifamilia.com/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://web.proptech.credifamilia.com">
+            <xs:import namespace="http://exception.web.proptech.credifamilia.com/xsd" />
+            <xs:import namespace="http://request.web.proptech.credifamilia.com/xsd" />
+            <xs:import namespace="http://response.web.proptech.credifamilia.com/xsd" />
+            <xs:import namespace="http://model.web.proptech.credifamilia.com/xsd" />
+            <xs:element name="proptechEndPointServiceFaultException">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="ServiceFaultException" nillable="true" type="ax24:ServiceFaultException" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="postExisteCliente">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="request" nillable="true" type="ax26:PostExisteClienteRequest" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="postExisteClienteResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax27:PostExisteClienteResponse" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="postCliente">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="request" nillable="true" type="ax26:PostClienteRequest" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="postClienteResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax27:PostClienteResponse" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getPreaprobado">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="request" nillable="true" type="ax26:GetPreaprobadoRequest" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getPreaprobadoResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax27:GetPreaprobadoResponse" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getListSelection">
+                <xs:complexType>
+                    <xs:sequence />
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getListSelectionResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax27:GetListSelectionResponse" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getAdresPreguntaRequest">
+                <xs:complexType>
+                    <xs:sequence />
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getAdresPreguntaRequestResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax27:GetAdresPreguntaResponseDTO" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://request.web.proptech.credifamilia.com/xsd">
+            <xs:complexType name="PostExisteClienteRequest">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="numeroDocumento" nillable="true" type="xs:long" />
+                    <xs:element minOccurs="0" name="origen" nillable="true" type="xs:string" />
+                    <xs:element minOccurs="0" name="tipoDocumento" nillable="true" type="xs:string" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="PostClienteRequest">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="apellidos" nillable="true" type="xs:string" />
+                    <xs:element minOccurs="0" name="autorizacionConsultaCentrales" type="xs:boolean" />
+                    <xs:element minOccurs="0" name="canal" nillable="true" type="xs:string" />
+                    <xs:element minOccurs="0" name="celular" nillable="true" type="xs:long" />
+                    <xs:element minOccurs="0" name="ciudadResidencia" nillable="true" type="xs:string" />
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="codeudor" nillable="true" type="ax25:Codeudor" />
+                    <xs:element minOccurs="0" name="codigoCapcha" nillable="true" type="xs:string" />
+                    <xs:element minOccurs="0" name="correoElectronico" nillable="true" type="xs:string" />
+                    <xs:element minOccurs="0" name="encontroVivienda" type="xs:boolean" />
+                    <xs:element minOccurs="0" name="estadoCivil" nillable="true" type="xs:string" />
+                    <xs:element minOccurs="0" name="fechaIngresoEmpleo" nillable="true" type="xs:dateTime" />
+                    <xs:element minOccurs="0" name="fechaNacimiento" nillable="true" type="xs:dateTime" />
+                    <xs:element minOccurs="0" name="idTransaccion" nillable="true" type="xs:string" />
+                    <xs:element minOccurs="0" name="ingresosMensuales" nillable="true" type="xs:long" />
+                    <xs:element minOccurs="0" name="ip" nillable="true" type="xs:string" />
+                    <xs:element minOccurs="0" name="nombres" nillable="true" type="xs:string" />
+                    <xs:element minOccurs="0" name="numeroDocumento" nillable="true" type="xs:long" />
+                    <xs:element minOccurs="0" name="numeroPersonasaCargo" nillable="true" type="xs:int" />
+                    <xs:element minOccurs="0" name="ocupacion" nillable="true" type="xs:string" />
+                    <xs:element minOccurs="0" name="origen" nillable="true" type="xs:string" />
+                    <xs:element minOccurs="0" name="recursosPropios" nillable="true" type="xs:long" />
+                    <xs:element minOccurs="0" name="sexo" nillable="true" type="xs:string" />
+                    <xs:element minOccurs="0" name="tipoActividad" nillable="true" type="xs:string" />
+                    <xs:element minOccurs="0" name="tipoContrato" nillable="true" type="xs:string" />
+                    <xs:element minOccurs="0" name="tipoDocumento" nillable="true" type="xs:string" />
+                    <xs:element minOccurs="0" name="tipoProducto" nillable="true" type="xs:string" />
+                    <xs:element minOccurs="0" name="valorCredito" nillable="true" type="xs:long" />
+                    <xs:element minOccurs="0" name="valorInmueble" nillable="true" type="xs:long" />
+                    <xs:element minOccurs="0" name="viviendaPropia" type="xs:boolean" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Codeudor">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="apellidos" nillable="true" type="xs:string" />
+                    <xs:element minOccurs="0" name="aportaIngresos" type="xs:boolean" />
+                    <xs:element minOccurs="0" name="autorizacionConsultaCentrales" type="xs:boolean" />
+                    <xs:element minOccurs="0" name="canal" nillable="true" type="xs:string" />
+                    <xs:element minOccurs="0" name="celular" nillable="true" type="xs:long" />
+                    <xs:element minOccurs="0" name="ciudadResidencia" nillable="true" type="xs:string" />
+                    <xs:element minOccurs="0" name="correoElectronico" nillable="true" type="xs:string" />
+                    <xs:element minOccurs="0" name="fechaNacimiento" nillable="true" type="xs:dateTime" />
+                    <xs:element minOccurs="0" name="ingresoMensual" nillable="true" type="xs:long" />
+                    <xs:element minOccurs="0" name="ip" nillable="true" type="xs:string" />
+                    <xs:element minOccurs="0" name="nombres" nillable="true" type="xs:string" />
+                    <xs:element minOccurs="0" name="numeroDocumento" nillable="true" type="xs:long" />
+                    <xs:element minOccurs="0" name="ocupacion" nillable="true" type="xs:string" />
+                    <xs:element minOccurs="0" name="tipoDocumento" nillable="true" type="xs:string" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="GetPreaprobadoRequest">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="idTransaccion" nillable="true" type="xs:string" />
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:ax29="http://model.web.proptech.credifamilia.com/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://response.web.proptech.credifamilia.com/xsd">
+            <xs:import namespace="http://model.web.proptech.credifamilia.com/xsd" />
+            <xs:import namespace="http://model.web.proptech.credifamilia.com/xsd" />
+            <xs:complexType name="ServiceStatus">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="code" nillable="true" type="xs:string" />
+                    <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="PostExisteClienteResponse">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="existe" nillable="true" type="xs:boolean" />
+                    <xs:element minOccurs="0" name="mensaje" nillable="true" type="xs:string" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="PostClienteResponse">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="idTransaccion" nillable="true" type="xs:string" />
+                    <xs:element minOccurs="0" name="recibido" nillable="true" type="xs:boolean" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="GetPreaprobadoResponse">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="cartaPreaprobado" nillable="true" type="xs:base64Binary" />
+                    <xs:element minOccurs="0" name="resultadoCliente" nillable="true" type="ax28:ResultadoCliente" />
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="resultadoCodeudor" nillable="true" type="ax28:ResultadoCodeudor" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="GetListSelectionResponse">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="listCiudadResidencia" nillable="true" type="ax28:ListCiudadResidencia" />
+                    <xs:element minOccurs="0" name="listEstadoCivil" nillable="true" type="ax28:ListEstadoCivil" />
+                    <xs:element minOccurs="0" name="listOcupacionCodeudor" nillable="true" type="ax28:ListOcupacionCodeudor" />
+                    <xs:element minOccurs="0" name="listOcupacionPrincipal" nillable="true" type="ax28:ListOcupacionPrincipal" />
+                    <xs:element minOccurs="0" name="listProfesionActividadEmpleado" nillable="true" type="ax28:ListProfesionActividadEmpleado" />
+                    <xs:element minOccurs="0" name="listProfesionActividadIndependiente" nillable="true" type="ax28:ListProfesionActividadIndependiente" />
+                    <xs:element minOccurs="0" name="listSexo" nillable="true" type="ax28:ListSexo" />
+                    <xs:element minOccurs="0" name="listTipoContrato" nillable="true" type="ax28:ListTipoContrato" />
+                    <xs:element minOccurs="0" name="listTipoDocumento" nillable="true" type="ax28:ListTipoDocumento" />
+                    <xs:element minOccurs="0" name="listTipoProducto" nillable="true" type="ax28:ListTipoProducto" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="GetAdresPreguntaResponseDTO">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="idTransaccion" nillable="true" type="xs:string" />
+                    <xs:element minOccurs="0" name="urlCaptcha" nillable="true" type="xs:string" />
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://model.web.proptech.credifamilia.com/xsd">
+            <xs:complexType name="ResultadoCliente">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="detalle" nillable="true" type="ax28:Detalle" />
+                    <xs:element minOccurs="0" name="estadoConsulta" nillable="true" type="xs:string" />
+                    <xs:element minOccurs="0" name="fechaRetomaSolicitud" nillable="true" type="xs:date" />
+                    <xs:element minOccurs="0" name="observacionesPrevalidador" nillable="true" type="xs:string" />
+                    <xs:element minOccurs="0" name="resultadPrevalidador" nillable="true" type="xs:string" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Detalle">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="LTVPrevalidado" nillable="true" type="xs:decimal" />
+                    <xs:element minOccurs="0" name="endeudamientoFinancieroPrevalidado" nillable="true" type="xs:decimal" />
+                    <xs:element minOccurs="0" name="montoSugeridoPreaprobado" nillable="true" type="xs:long" />
+                    <xs:element minOccurs="0" name="relacionCuotaIngresoPrevalidado" nillable="true" type="xs:decimal" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ResultadoCodeudor">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="detalle" nillable="true" type="ax28:Detalle" />
+                    <xs:element minOccurs="0" name="numeroDocumento" nillable="true" type="xs:long" />
+                    <xs:element minOccurs="0" name="tipoDocumento" nillable="true" type="xs:string" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ListCiudadResidencia">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="field" nillable="true" type="ax28:Field" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Field">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="label" nillable="true" type="xs:string" />
+                    <xs:element minOccurs="0" name="value" nillable="true" type="xs:string" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ListEstadoCivil">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="field" nillable="true" type="ax28:Field" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ListOcupacionCodeudor">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="field" nillable="true" type="ax28:Field" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ListOcupacionPrincipal">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="field" nillable="true" type="ax28:Field" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ListProfesionActividadEmpleado">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="field" nillable="true" type="ax28:Field" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ListProfesionActividadIndependiente">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="field" nillable="true" type="ax28:Field" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ListSexo">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="field" nillable="true" type="ax28:Field" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ListTipoContrato">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="field" nillable="true" type="ax28:Field" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ListTipoDocumento">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="field" nillable="true" type="ax28:Field" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ListTipoProducto">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="field" nillable="true" type="ax28:Field" />
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:ax23="http://response.web.proptech.credifamilia.com/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://exception.web.proptech.credifamilia.com/xsd">
+            <xs:import namespace="http://response.web.proptech.credifamilia.com/xsd" />
+            <xs:import namespace="http://response.web.proptech.credifamilia.com/xsd" />
+            <xs:complexType name="ServiceFaultException">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="serviceStatus" nillable="true" type="ax23:ServiceStatus" />
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="getAdresPreguntaRequestRequest">
+        <wsdl:part name="parameters" element="ns:getAdresPreguntaRequest" />
+    </wsdl:message>
+    <wsdl:message name="getAdresPreguntaRequestResponse">
+        <wsdl:part name="parameters" element="ns:getAdresPreguntaRequestResponse" />
+    </wsdl:message>
+    <wsdl:message name="postExisteClienteRequest">
+        <wsdl:part name="parameters" element="ns:postExisteCliente" />
+    </wsdl:message>
+    <wsdl:message name="postExisteClienteResponse">
+        <wsdl:part name="parameters" element="ns:postExisteClienteResponse" />
+    </wsdl:message>
+    <wsdl:message name="proptechEndPointServiceFaultException">
+        <wsdl:part name="parameters" element="ns:proptechEndPointServiceFaultException" />
+    </wsdl:message>
+    <wsdl:message name="getPreaprobadoRequest">
+        <wsdl:part name="parameters" element="ns:getPreaprobado" />
+    </wsdl:message>
+    <wsdl:message name="getPreaprobadoResponse">
+        <wsdl:part name="parameters" element="ns:getPreaprobadoResponse" />
+    </wsdl:message>
+    <wsdl:message name="getListSelectionRequest">
+        <wsdl:part name="parameters" element="ns:getListSelection" />
+    </wsdl:message>
+    <wsdl:message name="getListSelectionResponse">
+        <wsdl:part name="parameters" element="ns:getListSelectionResponse" />
+    </wsdl:message>
+    <wsdl:message name="postClienteRequest">
+        <wsdl:part name="parameters" element="ns:postCliente" />
+    </wsdl:message>
+    <wsdl:message name="postClienteResponse">
+        <wsdl:part name="parameters" element="ns:postClienteResponse" />
+    </wsdl:message>
+    <wsdl:portType name="proptechEndPointPortType">
+        <wsdl:operation name="getAdresPreguntaRequest">
+            <wsdl:input message="ns:getAdresPreguntaRequestRequest" wsaw:Action="urn:getAdresPreguntaRequest" />
+            <wsdl:output message="ns:getAdresPreguntaRequestResponse" wsaw:Action="urn:getAdresPreguntaRequestResponse" />
+        </wsdl:operation>
+        <wsdl:operation name="postExisteCliente">
+            <wsdl:input message="ns:postExisteClienteRequest" wsaw:Action="urn:postExisteCliente" />
+            <wsdl:output message="ns:postExisteClienteResponse" wsaw:Action="urn:postExisteClienteResponse" />
+            <wsdl:fault message="ns:proptechEndPointServiceFaultException" name="proptechEndPointServiceFaultException" wsaw:Action="urn:postExisteClienteproptechEndPointServiceFaultException" />
+        </wsdl:operation>
+        <wsdl:operation name="getPreaprobado">
+            <wsdl:input message="ns:getPreaprobadoRequest" wsaw:Action="urn:getPreaprobado" />
+            <wsdl:output message="ns:getPreaprobadoResponse" wsaw:Action="urn:getPreaprobadoResponse" />
+            <wsdl:fault message="ns:proptechEndPointServiceFaultException" name="proptechEndPointServiceFaultException" wsaw:Action="urn:getPreaprobadoproptechEndPointServiceFaultException" />
+        </wsdl:operation>
+        <wsdl:operation name="getListSelection">
+            <wsdl:input message="ns:getListSelectionRequest" wsaw:Action="urn:getListSelection" />
+            <wsdl:output message="ns:getListSelectionResponse" wsaw:Action="urn:getListSelectionResponse" />
+            <wsdl:fault message="ns:proptechEndPointServiceFaultException" name="proptechEndPointServiceFaultException" wsaw:Action="urn:getListSelectionproptechEndPointServiceFaultException" />
+        </wsdl:operation>
+        <wsdl:operation name="postCliente">
+            <wsdl:input message="ns:postClienteRequest" wsaw:Action="urn:postCliente" />
+            <wsdl:output message="ns:postClienteResponse" wsaw:Action="urn:postClienteResponse" />
+            <wsdl:fault message="ns:proptechEndPointServiceFaultException" name="proptechEndPointServiceFaultException" wsaw:Action="urn:postClienteproptechEndPointServiceFaultException" />
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="proptechEndPointSoap11Binding" type="ns:proptechEndPointPortType">
+        <wsp:PolicyReference xmlns:wsp="http://www.w3.org/ns/ws-policy" URI="#SigOnly" />
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+        <wsdl:operation name="getAdresPreguntaRequest">
+            <soap:operation soapAction="urn:getAdresPreguntaRequest" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="postExisteCliente">
+            <soap:operation soapAction="urn:postExisteCliente" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="proptechEndPointServiceFaultException">
+                <soap:fault use="literal" name="proptechEndPointServiceFaultException" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getPreaprobado">
+            <soap:operation soapAction="urn:getPreaprobado" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="proptechEndPointServiceFaultException">
+                <soap:fault use="literal" name="proptechEndPointServiceFaultException" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getListSelection">
+            <soap:operation soapAction="urn:getListSelection" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="proptechEndPointServiceFaultException">
+                <soap:fault use="literal" name="proptechEndPointServiceFaultException" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="postCliente">
+            <soap:operation soapAction="urn:postCliente" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="proptechEndPointServiceFaultException">
+                <soap:fault use="literal" name="proptechEndPointServiceFaultException" />
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="proptechEndPoint">
+        <wsdl:port name="proptechEndPointHttpSoap11Endpoint" binding="ns:proptechEndPointSoap11Binding">
+            <soap:address location="https://externos.credifamilia.com/proptech-ws-sec/services/proptechEndPoint.proptechEndPointHttpSoap11Endpoint/" />
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

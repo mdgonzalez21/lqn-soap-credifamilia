@@ -1,0 +1,38 @@
+region: us-west-2
+
+function_name: lqn-soap-credifamilia
+handler: service.handler
+description: Consume the api soap from credifamilia
+runtime: python3.8
+role: avatarLambda
+
+# S3 upload requires appropriate role with s3:PutObject permission
+# (ex. basic_s3_upload), a destination bucket, and the key prefix
+bucket_name: "lqn-soap-credifamilia"
+s3_key_prefix: "prd/"
+
+# if access key and secret are left blank, boto will use the credentials
+# defined in the [default] section of ~/.aws/credentials.
+aws_access_key_id: AKIAJRAKXZZIJ4HWDEMA
+aws_secret_access_key: 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
+
+# dist_directory: dist
+#timeout: 120
+#memory_size: 256
+# concurrency: 500
+#
+
+# Experimental Environment variables
+environment_variables:
+  APP_ENV: PRD
+
+# If `tags` is uncommented then tags will be set at creation or update
+# time.  During an update all other tags will be removed except the tags
+# listed here.
+#tags:
+#    tag_1: foo
+#    tag_2: bar
+
+# Build options
+build:
+  source_directories: lib # a comma delimited list of directories in your project root that contains source to package.
